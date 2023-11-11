@@ -2,6 +2,8 @@ pip install -r requirements.txt
 
 python -m pip install flash-attn --no-build-isolation
 
+python build_dataset.py
+
 python -m ochat.data.generate_dataset --model-type openchat_v3.2_mistral --model-path mistralai/Mistral-7B-v0.1 --in-files ./dataset/dataset.jsonl --out-prefix ./dataset/tokenized.jsonl
 
 
