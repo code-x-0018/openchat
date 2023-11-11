@@ -1,0 +1,14 @@
+
+transformers
+huggingface_hub
+deepspeed
+sentencepiece
+accelerate
+ray
+scipy
+datasets
+tensorboard
+wandb
+peft
+bitsandbytes
+xformers
