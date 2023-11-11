@@ -7,7 +7,7 @@ python -m ochat.data.generate_dataset --model-type openchat_v3.2_mistral --model
 
 NUM_GPUS=8
 
-!deepspeed --num_gpus=$NUM_GPUS --module ochat.training_deepspeed.train \
+!deepspeed --num_gpus=6 --module ochat.training_deepspeed.train \
           --model_path mistralai/Mistral-7B-v0.1 \
           --data_prefix ./dataset/tokenized.jsonl \
           --save_path ./model/apt-openchat-mistral-7B-v0.1 \
