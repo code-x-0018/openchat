@@ -1,0 +1,18 @@
+pip install -r requirements.txt
+
+python -m pip install flash-attn --no-build-isolation
+
+python -m ochat.data.generate_dataset --model-type openchat_v3.2_mistral --model-path mistralai/Mistral-7B-v0.1 --in-files ./dataset/dataset.jsonl --out-prefix ./dataset/tokenized.jsonl
+
+
+NUM_GPUS=8
+
+!deepspeed --num_gpus=$NUM_GPUS --module ochat.training_deepspeed.train \
+          --model_path mistralai/Mistral-7B-v0.1 \
+          --data_prefix ./dataset/tokenized.jsonl \
+          --save_path ./model/apt-openchat-mistral-7B-v0.1 \
+          --batch_max_len 83968 \
+          --epochs 3 \
+          --save_every 1 \
+          --deepspeed \
+          --deepspeed_config ochat/training_deepspeed/deepspeed_config.json
