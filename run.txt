@@ -13,7 +13,7 @@ NUM_GPUS=8
           --model_path mistralai/Mistral-7B-v0.1 \
           --data_prefix ./dataset/tokenized.jsonl \
           --save_path ./model/apt-openchat-mistral-7B-v0.1 \
-          --batch_max_len 83968 \
+          --batch_max_len 71680 \
           --epochs 3 \
           --save_every 1 \
           --deepspeed \
